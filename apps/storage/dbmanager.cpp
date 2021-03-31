@@ -53,7 +53,7 @@ DBManager::~DBManager()
     // Use timeout of 500ms to guaranty we won't block
     workerThread.wait(500);
     gDbManager = 0;
-    foreach (QString connectionName, QSqlDatabase::connectionNames()) {
+    for (const QString &connectionName : QSqlDatabase::connectionNames()) {
         QSqlDatabase::removeDatabase(connectionName);
     }
 }
